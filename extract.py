@@ -1,21 +1,6 @@
 """
 extract.py — SEPTA OSINT Extraction Engine (v4)
 =================================================
-Changes from v3:
-  (1) All regex-based extraction removed. The LLM in collect.py now handles
-      job title, education, emails, phones, and social platform/handle
-      identification. extract.py is now a pure aggregation + formatting layer.
-  (2) process_employee() simplified to clean field aggregation across
-      LLM entity fields — no regex cascades, no pattern matching.
-  (3) Location hint fallback now uses LLM-extracted location from entities
-      instead of regex pattern matching on snippets.
-  (4) OPA residential address lookup completely unchanged.
-  (5) Excel output columns identical — same sheet structure, same hyperlinks.
-  (6) Removed: extract_job_title, extract_education, parse_contacts,
-      extract_address_hints, _is_garbage_title, _clean_title_text,
-      CORPORATE_KEYWORDS, INSTITUTION_PATTERNS, ADDRESS_HINT_PATTERNS,
-      GARBAGE_VERBS, DATA_BROKERS, SKIP_SEGMENTS.
-
 Architecture:
   collect.py  →  ALL fetching + scraping + LLM extraction  →  JSON
   extract.py  →  aggregate JSON fields + OPA lookup + Excel  →  XLSX

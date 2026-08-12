@@ -1,20 +1,7 @@
-AGENTC_SERPER_API_KEY = "c213ee9acbb70eb39a32c3da91ff8acffb8778e7"
-ASEN_SEPTA_SERPER_API_KEY = "b57ded568e853310d963f81985d90c508a86d987"
-APS7140_SERPER_API_LEY = "7758de7844f957cba53fd28049598694b60a64cf"
 
 """
 collect.py — SEPTA OSINT Collection Engine (v3)
 =================================================
-Changes from v2:
-  (1) LLM prompt expanded — now extracts social_platform + social_handle
-      per asset in addition to job_title, employer, location, education,
-      email_addresses, phone_numbers.
-  (2) URL passed to llm_enrich_asset() so the model can identify the
-      platform from the URL itself (e.g. instagram.com → "instagram").
-  (3) social_handles field removed from v2 (it was returning raw strings
-      with no platform attribution and was never used by extract.py).
-      Replaced by social_platform + social_handle as a pair per asset.
-
 Architecture:
   collect.py  →  ALL fetching + scraping + LLM extraction  →  JSON
   extract.py  →  aggregate JSON fields + OPA lookup + Excel  →  XLSX
